@@ -9,7 +9,7 @@ import tensorflow as tf
 import numpy as np
 
 
-flask_app = Flask(_name_)
+flask_app = Flask(__name__)
 app = Api(app = flask_app, 
 		  version = "1.0", 
 		  title = "ML React App", 
@@ -18,21 +18,9 @@ app = Api(app = flask_app,
 name_space = app.namespace('prediction', description='Prediction APIs')
 
 model = app.model('Prediction params', 
-				  {'textField1': fields.String(required = True, 
-				  							   description="Text Field 1", 
-    					  				 	   help="Text Field 1 cannot be blank"),
-				  'textField2': fields.String(required = True, 
-				  							   description="Text Field 2", 
-    					  				 	   help="Text Field 2 cannot be blank"),
-				  'select1': fields.Integer(required = True, 
-				  							description="Select 1", 
-    					  				 	help="Select 1 cannot be blank"),
-				  'select2': fields.Integer(required = True, 
-				  							description="Select 2", 
-    					  				 	help="Select 2 cannot be blank"),
-				  'select3': fields.Integer(required = True, 
-				  							description="Select 3", 
-    					  				 	help="Select 3 cannot be blank")})
+				  {'file': fields.String(required = True, 
+				  							   description="Image to predict", 
+    					  				 	   help="Image cannot be blank")})
 
 # classifier = joblib.load('classifier.joblib')
 clf = ResNet50(weights='imagenet')
@@ -51,7 +39,7 @@ class MainClass(Resource):
 	@app.expect(model)		
 	def post(self):
 		#try: 				
-		formData = request.files.get('file','')#request.json
+		formData = request.files.get('file','')
 		img = image.load_img(formData, target_size=(224, 224))
 		x = image.img_to_array(img)
 		x = np.expand_dims(x, axis=0)
@@ -67,7 +55,6 @@ class MainClass(Resource):
 		pred_out = str(decode_predictions(preds, top=3)[0])
 		print('Predicted:', )
 
-		# prediction = classifier.predict(data)
 		response = jsonify({
 			"statusCode": 200,
 			"status": "Prediction made",
@@ -75,8 +62,3 @@ class MainClass(Resource):
 			})
 		response.headers.add('Access-Control-Allow-Origin', '*')
 		return response
-		#except Exception as error:
-		#	return jsonify({
-		#		"statusCode": 500,
-		#		"status": "Could not make prediction",
-		#		"error": str(error)

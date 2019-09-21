@@ -16,10 +16,8 @@ class App extends Component {
     this.state = {
       isLoading: false,
       hasImage: false,
-      formData: {
-        city_img: '',
-      },
-      fileUrl: null,
+      imageUrl: '',
+      fileUrl: '',
       file:null,
       result: ""
     };
@@ -28,14 +26,11 @@ class App extends Component {
   handleChange = (event) => {
     const value = event.target.value;
     const name = event.target.name;
-    var formData = this.state.formData;
+    console.log(value+" AND "+name);
     var hasImage = this.state.hasImage;
-    console.log(formData.city_img)
-    formData[name] = value;
-    hasImage = formData.city_img != '';
+    hasImage = value != '';
     this.setState({
       hasImage,
-      formData,
       fileUrl: URL.createObjectURL(event.target.files[0]),
       file:event.target.files[0],
     });
@@ -50,10 +45,6 @@ class App extends Component {
     this.setState({ isLoading: true });
     fetch('http://127.0.0.1:5000/prediction/', 
       {
-        // headers: {
-        //   'Accept': 'application/json',
-        //   'Content-Type': 'application/json'
-        // },
         method: 'POST',
         body: data
       })
@@ -74,7 +65,7 @@ class App extends Component {
   render() {
     const hasImage = this.state.hasImage;
     const isLoading = this.state.isLoading;
-    const formData = this.state.formData;
+    const imageUrl = this.state.imageUrl;
     const result = this.state.result;
     const fileUrl = this.state.fileUrl;
 
@@ -91,15 +82,15 @@ class App extends Component {
                 <Form.Control
                   type="file" 
                 //   placeholder="Text Field 1" 
-                  name="city_img"
-                  value={formData.city_img}
+                  name="image"
+                  value={imageUrl}
                   onChange={this.handleChange} />
               </Form.Group>
             </Form.Row>
             <Row>
                 { hasImage ?
                 <Col>
-                    <Image width={300} height={300} src={fileUrl} roundedCircle />
+                    <Image height={300} width={300} src={fileUrl} roundedCircle />
                 </Col> : null }
             </Row>
             
