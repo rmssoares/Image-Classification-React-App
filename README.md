@@ -1,6 +1,6 @@
 # Image-Classification-React-App
 
-The **Image-Classification-React-App** was a simple project with the intuition of developing experience where web applications and Machine Learning meet. A simple UI done in React allows the user to uplod an image, which, when uploaded to the underlying flask app, runs a prediction on a trained residual neural network (ResNet).
+The **Image-Classification-React-App** was a simple project with the intuition of developing experience where web applications and Machine Learning meet. A simple UI done in React allows the user to uplod an image, which, when uploaded to the underlying flask app, runs a prediction on a trained residual neural network ([ResNet](https://keras.io/applications/#resnet)).
 
 ## Getting Started
 
