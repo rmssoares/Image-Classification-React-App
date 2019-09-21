@@ -12,19 +12,25 @@ git clone git@github.com:thyriki/Image-Classification-React-App.git
 ### Prerequisites
 Ensure that you have [Flask](https://github.com/pallets/flask), [Flask-RESTPlus](https://flask-restplus.readthedocs.io/en/stable/index.html#), [Node 10.4.1](https://nodejs.org/en/), [yarn](https://yarnpkg.com/lang/en/) and [React](https://reactjs.org/) installed and properly set up.
 
-### Instructions
+## Instructions
 
-Start by opening a terminal, and navigate to the project's folder. To initialise the React App on port 3000:
+Start by opening a terminal, and navigate to the project's folder.
+
+### React App
+ To initialise the **React** app on port *3000*:
 
 ```
+cd ui/
 npm install -g serve
 npm run build
 serve -s build -l 3000
 ```
 
-And from the root folder, to initialise the Flask server:
+### Flask Web App
+To initialise the **Flask** web app:
 
 ```
+cd service/
 virtualenv -p Python3 .
 source bin/activate
 pip install -r requirements.txt
