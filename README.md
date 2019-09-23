@@ -10,7 +10,7 @@ To start, clone the present repository into your local machine. If you're unawar
 git clone git@github.com:thyriki/Image-Classification-React-App.git
 ```
 ### Prerequisites
-Ensure that you have [Flask](https://github.com/pallets/flask), [Flask-RESTPlus](https://flask-restplus.readthedocs.io/en/stable/index.html#), [Node 10.4.1](https://nodejs.org/en/), [yarn](https://yarnpkg.com/lang/en/) and [React](https://reactjs.org/) installed and properly set up.
+Ensure that you have [Node 10.4.1](https://nodejs.org/en/), [yarn](https://yarnpkg.com/lang/en/) and [React](https://reactjs.org/) installed and properly set up.
 
 ## Instructions
 
