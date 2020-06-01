@@ -43,7 +43,7 @@ This repo was developed while using this amazing [framework](https://towardsdata
 
 ## Authors
 
-* **Ricardo Soares** - [thyriki](https://github.com/thyriki)
+* **Ricardo Soares** - [rmssoares](https://github.com/rmssoares)
 * **Biagio Antonelli**  - [BiagioAntonelli](https://github.com/BiagioAntonelli)
 
 For any inquiries, feel free to open up an issue.
